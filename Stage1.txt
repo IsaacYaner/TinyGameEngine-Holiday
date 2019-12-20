@@ -1,0 +1,46 @@
+System frame:
+
+Timer:
+    now(n):
+	returns current time.
+    stop(n):
+	returns time span since last time to call stop(n), 0 if first time.
+    rstop(n):
+	returns time span since last time to call stop(n), 0 if first time.
+    reach(n, t):
+	returns whether time span is not less than last call of stop(n)/successful reach(n, t). 0 if first time.
+    Re(n):
+	reset nth timer.
+    reset(n):
+	reset nth timer.
+    Fps(t):
+	returns whether this time reaches frame time since last successful frame.
+
+Inps:
+    class keyset:
+	map<char, int> keys;
+	map<string, char>schema;
+	int keyId;
+	int peak;//value to give state of key when pressed
+	int flat;//value of holding a key
+	int dbclick;//value to be used to determine whether is double click
+
+	keyset();
+	~keyset();
+	void setSpan(int a)//change the decrease velocity  of state.
+	void setHold(int a);
+	void setPeak(int a);
+	void setDouble(int a);
+	void refresh();//Change state of key
+	char value(string a);//return char value of the key having the name "a"
+	int state(string a);//return the pressed state
+	int press(string a);//return true when button is pressed
+	int hold(string a);//return true when button is hold
+	int duoclick(string a);//return true when button is doubleclicked
+	COORD position();
+	COORD Pos();
+	void sense(Mouse *mouse);
+	void capture();
+
+    key(c):
+	returns if c is pressed. 

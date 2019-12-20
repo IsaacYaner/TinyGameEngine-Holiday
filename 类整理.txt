@@ -1,0 +1,6 @@
+Timer 重写
+keyset 重写
+计划再次重写Timer
+Timer从此不是一个helper，而是附着在变量上的一个挂件 。
+world以及Fairy代码重构
+下一步修改键盘的计时方式。

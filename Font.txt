@@ -1,0 +1,85 @@
+
+/*
+
+struct CONSOLE_FONT
+
+{
+
+	DWORD index;
+
+	COORD dim;
+
+};
+
+
+
+typedef BOOL(WINAPI *PROCSETCONSOLEFONT)(HANDLE, DWORD);
+
+typedef BOOL(WINAPI *PROCGETCONSOLEFONTINFO)(HANDLE, BOOL, DWORD, CONSOLE_FONT*);
+
+typedef COORD(WINAPI *PROCGETCONSOLEFONTSIZE)(HANDLE, DWORD);
+
+typedef DWORD(WINAPI *PROCGETNUMBEROFCONSOLEFONTS)();
+
+typedef BOOL(WINAPI *PROCGETCURRENTCONSOLEFONT)(HANDLE, BOOL, CONSOLE_FONT*);
+
+
+
+PROCSETCONSOLEFONT SetConsoleFont;
+
+PROCGETCONSOLEFONTINFO GetConsoleFontInfo;
+
+PROCGETCONSOLEFONTSIZE GConsoleFontSize;
+
+PROCGETNUMBEROFCONSOLEFONTS GetNumberOfConsoleFonts;
+
+PROCGETCURRENTCONSOLEFONT GCurrentConsoleFont;
+
+
+
+int main()
+
+{
+
+	int nNumFont;
+
+
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	HMODULE hKernel32 = GetModuleHandle("kernel32");
+
+
+
+	SetConsoleFont = (PROCSETCONSOLEFONT)GetProcAddress(hKernel32, "SetConsoleFont");
+
+	GetConsoleFontInfo = (PROCGETCONSOLEFONTINFO)GetProcAddress(hKernel32, "GetConsoleFontInfo");
+
+	GConsoleFontSize = (PROCGETCONSOLEFONTSIZE)GetProcAddress(hKernel32, "GetConsoleFontSize");
+
+	GetNumberOfConsoleFonts = (PROCGETNUMBEROFCONSOLEFONTS)GetProcAddress(hKernel32, "GetNumberOfConsoleFonts");
+
+	GCurrentConsoleFont = (PROCGETCURRENTCONSOLEFONT)GetProcAddress(hKernel32, "GetCurrentConsoleFont");
+
+
+
+	nNumFont = GetNumberOfConsoleFonts();
+
+	CONSOLE_FONT *pFonts = new CONSOLE_FONT[nNumFont];
+
+	GetConsoleFontInfo(hConsole, 0, nNumFont, pFonts);
+
+
+
+	SetConsoleFont(hConsole, pFonts[1].index);
+
+
+
+	cout << "This is Console C++!" << endl;
+
+
+	while (1);
+	return 0;
+
+}*/
+//https://blog.csdn.net/liluo_2951121599/article/details/66474233
