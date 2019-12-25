@@ -21,7 +21,7 @@ protected:
 	void EndFrame();	//End loop after completing this frame.
 	World scene;
 	keyset keys;
-	canvas canv;
+	Canvas canv;
 	Timer timer;
 	virtual int Frame();
 public:
@@ -33,7 +33,7 @@ class TestFrame : public frame
 protected:
 	int Inis();
 	int Frame();
-	World2D scene;
+	PixelWorld2D scene;
 public:
 	int Test();
 };

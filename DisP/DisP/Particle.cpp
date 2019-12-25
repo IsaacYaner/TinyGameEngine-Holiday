@@ -1,7 +1,7 @@
 #include "Particle.h"
 #include <string>
 #include <stdio.h>
-
+#include <iostream>
 Fairy* Particle::job()
 {
 
@@ -9,6 +9,7 @@ Fairy* Particle::job()
 	while (ptr)
 	{
 		ptr->job();
+		ptr = ptr->next;
 	}
 	return nullptr;
 }
@@ -43,65 +44,56 @@ Particle::~Particle()
 
 Fairy* Painter::job()
 {
+	paint();
 	return nullptr;
 }
 
 Painter::Painter()
 {
+	pixel = nullptr;
 }
 
-Painter::Painter(Coord coord, std::string name)
+Painter::Painter(Pixel * p)
 {
-	colorCode = -1;
-	colorName = name;
-	position = coord;
+	pixel = p;
 }
 
-Painter::Painter(int x, int y, std::string name)
+void Painter::paint()//Bug occurs here, delete the comment when fixed.
 {
-	colorCode = -1;
-	colorName = name;
-	position = Coord(x, y);
+	if (pixel == nullptr)
+		return;
+	space->append(pixel);
 }
 
-Painter::Painter(Coord coord, int color)
+void Painter::paint(Pixel* p)
 {
-	position = coord;
-	colorCode = color;
+	space->append(p);
 }
-
-Painter::Painter(int x, int y, int color)
-{
-	position = Coord(x, y);
-	colorCode = color;
-}
-
-void Painter::setColor(int c)
-{
-	colorCode = c;
-}
-
-void Painter::setPosition(Coord coord)
-{
-	position = coord;
-}
-
-Coord Painter::getPosition()
-{
-	return position;
-}
-
-std::string Painter::getName()
-{
-	return colorName;
-}
-
-int Painter::getColor()
-{
-	return colorCode;
-}
-
 
 Painter::~Painter()
 {
+}
+
+Painter::Painter(SortedPixelList* s, Coord coord, std::string name)
+{
+	space = s;
+	pixel = new Pixel(coord, name);
+}
+
+Painter::Painter(SortedPixelList* s, int x, int y, std::string name)
+{
+	space = s;
+	pixel = new Pixel(x, y, name);
+}
+
+Painter::Painter(SortedPixelList* s, Coord coord, int color)
+{
+	space = s;
+	pixel = new Pixel(coord, color);
+}
+
+Painter::Painter(SortedPixelList* s, int x, int y, int color)
+{
+	space = s;
+	pixel = new Pixel(x, y, color);
 }

@@ -2,10 +2,11 @@
 
 
 
-Coord::Coord(int hori, int vert)
+Coord::Coord(int hori, int vert, int deep)
 {
 	x = hori;
 	y = vert;
+	z = deep;
 }
 
 Coord::Coord()
@@ -26,8 +27,9 @@ void Coord::yChange(int b)
 	y += b;
 }
 
-void Coord::moveTo(int a, int b)
+void Coord::moveTo(int a, int b, int c)
 {
 	x = a;
 	y = b;
+	z = c;
 }

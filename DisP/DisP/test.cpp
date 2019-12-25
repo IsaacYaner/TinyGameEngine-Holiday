@@ -16,27 +16,28 @@ int main()
 
 int TestFrame::Test()//Later will have a outer interface to receive various parameters.
 {
+//	scene.content[40][40]->append(pp);
 	scene.job();
 	if (keys.press("LeftClick"))
-	{
+	{/*
 		if(scene.square[keys.pos().x][keys.pos().y] == nullptr)
-			scene.square[keys.pos().x][keys.pos().y] = ( new Painter(keys.pos(), "À¶"));
+			scene.square[keys.pos().x][keys.pos().y] = ( new Painter(keys.pos(), "À¶"));*/
 		//scene.square[keys.Pos().X / 2 % canv.wid()][keys.Pos().Y % canv.hei()] = 6;
 		//canv.Layer[keys.Pos().X / 2 % canv.wid()][keys.Pos().Y % canv.hei()] = 6;
 	}
 	if (keys.press("RClick"))
-	{
+	{/*
 		if (scene.square[keys.pos().x][keys.pos().y] == nullptr)
-			scene.square[keys.pos().x][keys.pos().y] = (new Painter(keys.pos(), "ÂÌ"));
+			scene.square[keys.pos().x][keys.pos().y] = (new Painter(keys.pos(), "ÂÌ"));*/
 		//scene.square[keys.Pos().X / 2 % canv.wid()][keys.Pos().Y % canv.hei()] = 16;
 	}
 	if (keys.press("MClick"))
-	{
+	{/*
 		if (scene.square[keys.pos().x][keys.pos().y] != nullptr)
 		{
 			delete scene.square[keys.pos().x][keys.pos().y];
 			scene.square[keys.pos().x][keys.pos().y] = nullptr;
-		}
+		}*/
 		//scene.square[keys.Pos().X / 2 % canv.wid()][keys.Pos().Y % canv.hei()] = 26;
 	}
 	canv.project(scene);//Would be deleted later.
@@ -54,12 +55,18 @@ int TestFrame::Inis()
 							   //setFps(0);			//Set Max FPS
 	keys = keyset();		//Define input source.
 	keys.capture();			//Start capturing keys.
-
-	canv = canvas(320, 180);//Set canvas size.
-	scene = World2D(320, 180);//Create a scene.
-	timer = Timer();		//Initialise a timer.
-	Fairy* ptr = new Painter(keys.pos(), "À¶");
+	canv = Canvas(320, 180);//Set Canvas size.
+	scene = PixelWorld2D(320, 180);//Create a scene.
+	timer = Timer();		//Initialise a timer fir FPS.
+	Fairy* ptr = new Painter(scene.space(40, 40),keys.pos(), "À¶");
 	scene.addFairy(ptr);
+
+	Pixel* pp = new Pixel(keys.pos(), "À¶");
+	scene.space(10, 10)->append(pp);
+
+	/*Pixel* pp = new Pixel(keys.pos(), "À¶");
+	vector<Pixel*> vp;
+	vp.push_back(pp);*/
 	return 0;
 }
 

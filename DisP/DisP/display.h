@@ -4,7 +4,7 @@
 #include <map>
 using namespace std;
 int set_color(int a);
-class canvas
+class Canvas : Fairy
 {
 protected:
 	int width;		//Width
@@ -16,15 +16,15 @@ protected:
 	/*int *temp;
 	int tnum;*/
 public:
+	Fairy * job();
 	int **Layer;	//Later change to protected
 	int wid();		//Getter function for width.
 	int hei();		//Getter function for height.
 	void dis();		//Print pixels to cmd console.
-	void paint(Painter p);//Print given particle.
-	void project(World2D a);		//Directly project 2D World to canvas.//////////Don't need it any more!!! Delete
-	canvas(int width, int height);	//Construct a 2D canvas according to width and height
-	canvas();
-	~canvas();
+	void project(PixelWorld2D a);		//Directly project 2D World to Canvas.//////////Don't need it any more!!! Delete
+	Canvas(int width, int height);	//Construct a 2D Canvas according to width and height
+	Canvas();
+	~Canvas();
 	void dye(string s, int darken = 0);	//Set color according to color name and mapping array.
 	//void draw();
 };

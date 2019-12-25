@@ -116,26 +116,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Coord.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="Fairy.h" />
+    <ClInclude Include="FairyList.h" />
     <ClInclude Include="FairySamples.h" />
     <ClInclude Include="Inps.h" />
     <ClInclude Include="KeyState.h" />
     <ClInclude Include="Particle.h" />
+    <ClInclude Include="Pixel.h" />
     <ClInclude Include="SysFrame.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="WindowsCommando.h" />
     <ClInclude Include="world.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Coord.cpp" />
     <ClCompile Include="Fairy.cpp" />
+    <ClCompile Include="FairyList.cpp" />
     <ClCompile Include="FairySamples.cpp" />
     <ClCompile Include="Inps.cpp" />
     <ClCompile Include="KeyState.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Pixel.cpp" />
     <ClCompile Include="SysFrame.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Timer.cpp" />

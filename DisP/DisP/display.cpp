@@ -18,18 +18,18 @@ int set_color(int color_code)/*char* color_name*/
 	return 0;
 }
 
-void canvas::project(World2D a)
+void Canvas::project(PixelWorld2D a)
 {
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			if (a.space(i, j) == nullptr)
+			if (a.tempCamera(i, j) == nullptr)
 			{
 				Layer[i][j] = 0;
 				continue;
 			}
-			Painter* ptr = (Painter *)(a.space(i, j));
+			Pixel* ptr = (Pixel *)(a.tempCamera(i, j));
 			if (ptr->getColor() == -1)
 				Layer[i][j] = color[ptr->getName()];
 			else
@@ -38,7 +38,7 @@ void canvas::project(World2D a)
 	}
 }
 
-void canvas::render(int a)
+void Canvas::render(int a)
 {
 	int paint = 17 * (a % 10);//nth pure color in color code.
 	if (a / 10 % 10 == 1)//brightness level
@@ -46,7 +46,7 @@ void canvas::render(int a)
 	set_color(paint);
 }
 
-void canvas::dye(string s, int darken)
+void Canvas::dye(string s, int darken)
 {
 	if (darken || color[s] == 0)
 		set_color(color[s]);
@@ -54,13 +54,19 @@ void canvas::dye(string s, int darken)
 		set_color(color[s] + 10);
 }
 
-void canvas::pri(int a)//Add light and shade later
+void Canvas::pri(int a)//Add light and shade later
 {
 	render(a);
 	printf("■");
 }
 
-void canvas::dis()
+Fairy *Canvas::job()
+{
+	dis();
+	return nullptr;
+}
+
+void Canvas::dis()
 {
 	for(int i = 0; i < height; i++)
 		for (int j = 0; j < width; j++)
@@ -74,13 +80,7 @@ void canvas::dis()
 		}
 }
 
-void canvas::paint(Painter p)
-{
-	Coord c = p.getPosition();
-	Layer[c.x][c.y] = p.getColor();
-}
-
-canvas::canvas(int wid, int hei)//需不需要改成可变的
+Canvas::Canvas(int wid, int hei)//需不需要改成可变的
 {
 	width = wid;
 	height = hei;
@@ -112,22 +112,22 @@ canvas::canvas(int wid, int hei)//需不需要改成可变的
 	color["white"] = 7;
 }
 
-int canvas::wid()
+int Canvas::wid()
 {
 	return width;
 }
 
-int canvas::hei()
+int Canvas::hei()
 {
 	return height;
 }
 
-canvas::canvas()
+Canvas::Canvas()
 {
 
 }
 //不知道为啥不能delete， 在这里内存已经被释放了
-canvas::~canvas()
+Canvas::~Canvas()
 {
 	/*
 	for (int i = 0; i < width; i++)

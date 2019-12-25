@@ -48,6 +48,15 @@
     <ClInclude Include="Coord.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FairyList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsCommando.cpp">
@@ -87,6 +96,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Coord.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FairyList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Pixel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

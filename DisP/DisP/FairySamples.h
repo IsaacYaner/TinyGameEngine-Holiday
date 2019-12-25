@@ -10,7 +10,7 @@ public:
 class biu : public Fairy
 {
 public:
-	World2D * map;
+	PixelWorld2D * map;
 	Fairy* job();
-	biu(World2D* a);
+	biu(PixelWorld2D* a);
 };

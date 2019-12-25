@@ -1,6 +1,7 @@
 #include "world.h"
 //¡°inps¡±
 #include <stdio.h>
+#include <iostream>
 #include "Fairy.h"
 
 World::World()
@@ -28,36 +29,56 @@ Fairy* World::job()
 	}
 	return nullptr;
 }
-int World2D::wid()
+int PixelWorld2D::wid()
 {
 	return width;
 }
-int World2D::hei()
+int PixelWorld2D::hei()
 {
 	return height;
 }
-World2D::World2D(int wid, int hei)
+PixelWorld2D::PixelWorld2D(int wid, int hei)
 {
 	width = wid;
 	height = hei;
 	fairy = NULL;
 	square = new Fairy**[wid];
+	content = new SortedPixelList**[wid];
 	for (int i = 0; i < wid; i++)
 	{
 		square[i] = new Fairy*[hei];
+		content[i] = new SortedPixelList*[hei];
 	}
 	for (int i = 0; i < wid; i++)
 	{
 		for (int j = 0; j < hei; j++)
 		{
 			square[i][j] = nullptr;
+			content[i][j] = new SortedPixelList();
+			addFairy(content[i][j]);
 		}
 	}
 }
-Fairy* World2D::space(int a, int b)//Will change to abstract painter out.
+Fairy * PixelWorld2D::job()
 {
-	return square[a][b];
+	Fairy* ptr = fairy;
+	while (ptr)
+	{
+		ptr->job();
+		ptr = ptr->next;
+	}
+	return nullptr;
 }
-World2D::World2D()
+Fairy * PixelWorld2D::tempCamera(int a, int b)
 {
+	return content[a][b]->first();
+}
+SortedPixelList* PixelWorld2D::space(int a, int b)//Will change to abstract painter out.
+{
+	//return square[a][b];
+	return content[a][b];
+}
+PixelWorld2D::PixelWorld2D()
+{
+
 }
